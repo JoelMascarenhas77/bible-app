@@ -4,88 +4,89 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import { Button, Card } from 'react-native-paper';
 
 const oldTestament = [
-  'Gen', 'Exo', 'Lev', 'Num', 'Deu',
-  'Jos', 'Jdg', 'Rut', '1Sa', '2Sa',
-  '1Ki', '2Ki', '1Ch', '2Ch', 'Ezr',
-  'Neh', 'Est', 'Job', 'Psa', 'Pro',
-  'Ecc', 'Sng', 'Isa', 'Jer', 'Lam',
-  'Ezk', 'Dan', 'Hos', 'Jol', 'Amo',
-  'Oba', 'Jon', 'Mic', 'Nah', 'Hab',
-  'Zep', 'Hag', 'Zec', 'Mal'
+  ['Gen', 'Ex', 'Lev', 'Num', 'Deu'],
+  ['Jos', 'Jdg', 'Rut'],
+  ['1Sa', '2Sa', '1Ki', '2Ki', '1Ch', '2Ch'],
+  ['Ezr', 'Neh', 'Est'],
+  ['Job', 'Psa', 'Pro', 'Ecc', 'Sng'],
+  ['Isa', 'Jer', 'Lam', 'Ezk', 'Dan'],
+  ['Hos', 'Joe', 'Amo', 'Oba', 'Jon', 'Mic'],
+  ['Nah', 'Hab', 'Zep', 'Hag', 'Zec', 'Mal'],
 ];
 
 const newTestament = [
-  'Mat', 'Mrk', 'Luk', 'Jhn', 'Act',
-  'Rom', '1Co', '2Co', 'Gal', 'Eph',
-  'Php', 'Col', '1Th', '2Th', '1Ti',
-  '2Ti', 'Tit', 'Phm', 'Heb', 'Jas',
-  '1Pe', '2Pe', '1Jn', '2Jn', '3Jn',
-  'Jud', 'Rev'
+  ['Mat', 'Mk', 'Lk', 'Jn', 'Act'],
+  ['Rom', '1Co', '2Co'],
+  ['Gal', 'Eph', 'Php', 'Col'],
+  ['1Th', '2Th', '1Ti', '2Ti', 'Tit', 'Phm'],
+  ['Heb', 'Jas', '1Pe', '2Pe'],
+  ['1Jn', '2Jn', '3Jn', 'Jud', 'Rev'],
 ];
 
-
 const BooksPage = () => {
-  const renderButtons = (books: string[]) =>
-    books.map((book, index) => (
-      <Button
-        key={index}
-        mode="contained"
-        style={styles.button}
-        compact = {true}
-        labelStyle={{fontSize: 8  }}
-        onPress={() => console.log(`Pressed ${book}`)}
-      >
-        {book}
-      </Button>
-    ));
+  const renderRow = (row: string[], index: number) => (
+    <View key={index} style={styles.rowCard}>
+      <View style={styles.buttonRow}>
+        {row.map((book, idx) => (
+          <Button
+            key={idx}
+            mode="contained"
+            compact={true}
+            onPress={() => console.log(`Pressed ${book}`)}
+            contentStyle={{ paddingVertical: 0, paddingHorizontal: 4 }}
+            labelStyle={{ fontSize: 12 }}
+            style={styles.button}
+          >
+            {book}
+          </Button>
+        ))}
+      </View>
+    </View>
+  );
 
   return (
-    <ScrollView  style= {styles.container}>
+    <ScrollView style={styles.container}>
       <Card style={styles.card}>
         <Card.Title title="Old Testament" />
         <Card.Content>
-          <View style={styles.buttonGrid}>
-            {renderButtons(oldTestament)}
-          </View>
+          {oldTestament.map(renderRow)}
         </Card.Content>
       </Card>
 
       <Card style={styles.card}>
         <Card.Title title="New Testament" />
         <Card.Content>
-          <View style={styles.buttonGrid}>
-            {renderButtons(newTestament)}
-          </View>
+          {newTestament.map(renderRow)}
         </Card.Content>
       </Card>
-  
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    padding: 1,
+    padding: 10,
+    paddingTop: 30,
   },
   card: {
-    marginBottom: 4,
+    marginBottom: 10,
   },
-  buttonGrid: {
-   
+  rowCard: {
+    marginBottom: 6,
+    backgroundColor: '#f2f2f2',
+    paddingVertical: 4,
+    paddingHorizontal: 2,
+    borderRadius: 4,
+  },
+  buttonRow: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-   
   },
   button: {
-
- 
-  width: '15%',
-  margin: 1,
-  minWidth: 1,
-  alignItems: 'center',
-},
-
-
+    marginRight: 4,
+    minWidth: 40,
+    width: '15%',
+  },
 });
 
 export default BooksPage;
