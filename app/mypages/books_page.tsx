@@ -1,27 +1,28 @@
 // pages/ReadPage.tsx
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { Button, Card } from 'react-native-paper';
 
 const oldTestament = [
-  'GEN', 'EXO', 'LEV', 'NUM', 'DEU',
-  'JOS', 'JDG', 'RUT', '1SA', '2SA',
-  '1KI', '2KI', '1CH', '2CH', 'EZR',
-  'NEH', 'EST', 'JOB', 'PSA', 'PRO',
-  'ECC', 'SNG', 'ISA', 'JER', 'LAM',
-  'EZK', 'DAN', 'HOS', 'JOL', 'AMO',
-  'OBA', 'JON', 'MIC', 'NAH', 'HAB',
-  'ZEP', 'HAG', 'ZEC', 'MAL'
+  'Gen', 'Exo', 'Lev', 'Num', 'Deu',
+  'Jos', 'Jdg', 'Rut', '1Sa', '2Sa',
+  '1Ki', '2Ki', '1Ch', '2Ch', 'Ezr',
+  'Neh', 'Est', 'Job', 'Psa', 'Pro',
+  'Ecc', 'Sng', 'Isa', 'Jer', 'Lam',
+  'Ezk', 'Dan', 'Hos', 'Jol', 'Amo',
+  'Oba', 'Jon', 'Mic', 'Nah', 'Hab',
+  'Zep', 'Hag', 'Zec', 'Mal'
 ];
 
 const newTestament = [
-  'MAT', 'MRK', 'LUK', 'JHN', 'ACT',
-  'ROM', '1CO', '2CO', 'GAL', 'EPH',
-  'PHP', 'COL', '1TH', '2TH', '1TI',
-  '2TI', 'TIT', 'PHM', 'HEB', 'JAS',
-  '1PE', '2PE', '1JN', '2JN', '3JN',
-  'JUD', 'REV'
+  'Mat', 'Mrk', 'Luk', 'Jhn', 'Act',
+  'Rom', '1Co', '2Co', 'Gal', 'Eph',
+  'Php', 'Col', '1Th', '2Th', '1Ti',
+  '2Ti', 'Tit', 'Phm', 'Heb', 'Jas',
+  '1Pe', '2Pe', '1Jn', '2Jn', '3Jn',
+  'Jud', 'Rev'
 ];
+
 
 const BooksPage = () => {
   const renderButtons = (books: string[]) =>
@@ -30,6 +31,8 @@ const BooksPage = () => {
         key={index}
         mode="contained"
         style={styles.button}
+
+        labelStyle={{fontSize: 8  }}
         onPress={() => console.log(`Pressed ${book}`)}
       >
         {book}
@@ -37,7 +40,7 @@ const BooksPage = () => {
     ));
 
   return (
-    <View style={styles.container}>
+    <ScrollView  style= {styles.container}>
       <Card style={styles.card}>
         <Card.Title title="Old Testament" />
         <Card.Content>
@@ -55,26 +58,34 @@ const BooksPage = () => {
           </View>
         </Card.Content>
       </Card>
-    </View>
+  
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    padding: 12,
+    padding: 8,
   },
   card: {
-    marginBottom: 16,
+    marginBottom: 4,
   },
   buttonGrid: {
+   
     flexDirection: 'row',
     flexWrap: 'wrap',
    
   },
   button: {
-    margin: 3,
-    width: '8%',
-  },
+
+  margin: 1,
+  width: '15%',
+  padding: 0,
+  minWidth: 1,
+  alignItems: 'center',
+},
+
+
 });
 
 export default BooksPage;
