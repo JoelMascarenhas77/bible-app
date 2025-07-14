@@ -31,7 +31,7 @@ const BooksPage = () => {
         key={index}
         mode="contained"
         style={styles.button}
-
+        compact = {true}
         labelStyle={{fontSize: 8  }}
         onPress={() => console.log(`Pressed ${book}`)}
       >
@@ -65,7 +65,7 @@ const BooksPage = () => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 8,
+    padding: 1,
   },
   card: {
     marginBottom: 4,
@@ -78,9 +78,9 @@ const styles = StyleSheet.create({
   },
   button: {
 
-  margin: 1,
+ 
   width: '15%',
-  padding: 0,
+  margin: 1,
   minWidth: 1,
   alignItems: 'center',
 },
